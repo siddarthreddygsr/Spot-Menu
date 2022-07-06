@@ -22,6 +22,9 @@ class AppDelegate: NSObject,ObservableObject,NSApplicationDelegate{
     @Published var popover = NSPopover()
     func applicationDidFinishLaunching(_ notification: Notification) {
         setUpMacMenu()
+        if let window = NSApplication.shared.windows.first {
+                    window.close()
+                }
     }
     func setUpMacMenu(){
         popover.animates = true
@@ -50,4 +53,5 @@ class AppDelegate: NSObject,ObservableObject,NSApplicationDelegate{
             }
         }
     }
+    
 }
