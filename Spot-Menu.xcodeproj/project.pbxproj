@@ -47,6 +47,8 @@
 		DDD24AE72875CE7300F05E2D /* Spot_MenuUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_MenuUITests.swift; sourceTree = "<group>"; };
 		DDD24AE92875CE7300F05E2D /* Spot_MenuUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_MenuUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		DDF727C82875FABB00D4AA71 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		DDF727CA287602D500D4AA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DDF727CB287603BB00D4AA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		DDD24ACA2875CE7000F05E2D /* Spot-Menu */ = {
 			isa = PBXGroup;
 			children = (
+				DDF727CA287602D500D4AA71 /* Info.plist */,
 				DDD24AF82875D95C00F05E2D /* ViewModel */,
 				DDD24AF72875D95500F05E2D /* Model */,
 				DDD24AF62875D94C00F05E2D /* View */,
@@ -120,6 +123,7 @@
 		DDD24ADC2875CE7300F05E2D /* Spot-MenuTests */ = {
 			isa = PBXGroup;
 			children = (
+				DDF727CB287603BB00D4AA71 /* Info.plist */,
 				DDD24ADD2875CE7300F05E2D /* Spot_MenuTests.swift */,
 			);
 			path = "Spot-MenuTests";
@@ -445,6 +449,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Spot-Menu/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Spot-Menu/Info.plist";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -475,6 +480,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Spot-Menu/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Spot-Menu/Info.plist";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -502,6 +508,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Spot-MenuTests/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
@@ -524,6 +532,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Spot-MenuTests/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
