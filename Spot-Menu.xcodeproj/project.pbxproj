@@ -15,6 +15,9 @@
 		DDD24AE82875CE7300F05E2D /* Spot_MenuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD24AE72875CE7300F05E2D /* Spot_MenuUITests.swift */; };
 		DDD24AEA2875CE7300F05E2D /* Spot_MenuUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD24AE92875CE7300F05E2D /* Spot_MenuUITestsLaunchTests.swift */; };
 		DDF727C92875FABB00D4AA71 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF727C82875FABB00D4AA71 /* Home.swift */; };
+		DDF727CD28761E2E00D4AA71 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF727CC28761E2E00D4AA71 /* Helpers.swift */; };
+		DDF727CF28761F4400D4AA71 /* SpotifyHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF727CE28761F4400D4AA71 /* SpotifyHelpers.swift */; };
+		DDF727D128762A6500D4AA71 /* a in Resources */ = {isa = PBXBuildFile; fileRef = DDF727D028762A6400D4AA71 /* a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		DDF727C82875FABB00D4AA71 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		DDF727CA287602D500D4AA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DDF727CB287603BB00D4AA71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DDF727CC28761E2E00D4AA71 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		DDF727CE28761F4400D4AA71 /* SpotifyHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyHelpers.swift; sourceTree = "<group>"; };
+		DDF727D028762A6400D4AA71 /* a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +147,7 @@
 		DDD24AF62875D94C00F05E2D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDF727D028762A6400D4AA71 /* a */,
 				DDF727C82875FABB00D4AA71 /* Home.swift */,
 			);
 			path = View;
@@ -149,6 +156,8 @@
 		DDD24AF72875D95500F05E2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DDF727CC28761E2E00D4AA71 /* Helpers.swift */,
+				DDF727CE28761F4400D4AA71 /* SpotifyHelpers.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF727D128762A6500D4AA71 /* a in Resources */,
 				DDD24AD42875CE7300F05E2D /* Preview Assets.xcassets in Resources */,
 				DDD24AD02875CE7300F05E2D /* Assets.xcassets in Resources */,
 			);
@@ -293,6 +303,8 @@
 				DDD24ACE2875CE7000F05E2D /* ContentView.swift in Sources */,
 				DDF727C92875FABB00D4AA71 /* Home.swift in Sources */,
 				DDD24ACC2875CE7000F05E2D /* Spot_MenuApp.swift in Sources */,
+				DDF727CF28761F4400D4AA71 /* SpotifyHelpers.swift in Sources */,
+				DDF727CD28761E2E00D4AA71 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +517,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -529,6 +542,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

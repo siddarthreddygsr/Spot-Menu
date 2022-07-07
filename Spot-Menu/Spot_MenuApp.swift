@@ -11,6 +11,7 @@ import SwiftUI
 struct Spot_MenuApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
+        
         WindowGroup {
             ContentView()
         }

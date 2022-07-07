@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 struct Home: View {
+    @StateObject var updaterViewModel = UpdaterViewModel()
     var body: some View {
+       
         VStack{
             HStack{
-//                Spacer()
                 Button(action: {
                     NSApplication.shared.terminate(nil)
                 }, label: {
@@ -19,6 +21,7 @@ struct Home: View {
                         .resizable()
                         .frame(width: 20,height:20)
                 })
+                .buttonStyle(PlainButtonStyle())
                 .padding(.leading,250)
                 .padding(.top,10)
                 
@@ -28,10 +31,12 @@ struct Home: View {
                 .resizable()
                 .frame(width: 90,height: 90)
                 .padding(10)
+                
                 VStack{
-                    Text("Let Me Down Slowly")
+                    Text("\(updaterViewModel.trackname)")
                         .font(.system(size: 20))
-                    Text("Alec Benjamin")
+                    
+                    Text("\(updaterViewModel.artistname)")
                 }
                 .frame(width: 190)
                 
@@ -46,10 +51,17 @@ struct Home: View {
                     .resizable()
                     .frame(width:27,height: 27)
                     .padding(5)
-                Image(systemName: "play.fill")
-                    .resizable()
-                    .frame(width:30,height: 30)
-                    .padding(5)
+                Button(action: {
+                    let response = SpotifyHelpers.tellSpotify(command: "playpause")
+                    print(response)
+                }, label: {
+                    Image(systemName: "play.fill")
+                                        .resizable()
+                                        .frame(width:30,height: 30)
+                                        .padding(5)
+                })
+                .buttonStyle(PlainButtonStyle())
+
                 Image(systemName: "goforward.10")
                     .resizable()
                     .frame(width:27,height: 27)
@@ -61,7 +73,7 @@ struct Home: View {
             }
             Spacer()
         }
-        .frame(width: 320, height: 250)
+        .frame(width: 320, height: 220)
     }
 }
 
@@ -71,3 +83,42 @@ struct Home_Previews: PreviewProvider {
     }
 }
 
+//class Updater {
+//    public static func getTrack(response: String){
+//        response = SpotifyHelpers.tellSpotify(command: "get name of current track")
+//    }
+//}
+
+//var timer = Timer()
+//var trackname:String = "ERROR"
+//func viewDidLoad() {
+//    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+//        getTrackname(trackname: &trackname)
+//    })
+//}
+//
+//func getTrackname(trackname: inout String){
+//    trackname = SpotifyHelpers.tellSpotify(command: "get name of current track")
+//}
+//func getArtist(artist: inout String){
+//    artist = SpotifyHelpers.tellSpotify(command: "get artist of current track")
+//}
+
+class UpdaterViewModel: ObservableObject {
+    @Published var trackname:String = "ERROR"
+    @Published var artistname:String = "ERROR"
+
+    var timer: Timer?
+    init() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+            self.refresh()
+        })
+    }
+    deinit {
+        timer?.invalidate()
+    }
+    func refresh() {
+        trackname = SpotifyHelpers.tellSpotify(command: "get name of current track")
+        artistname = SpotifyHelpers.tellSpotify(command: "get artist of current track")
+    }
+}
