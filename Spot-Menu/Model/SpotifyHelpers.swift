@@ -1,3 +1,4 @@
+import AppKit
 class SpotifyHelpers {
     public static func tellSpotify(command: String) -> String {
         let response = Helpers.excuteAppleScript(
@@ -30,6 +31,8 @@ class Track{
     public var artist: String
     public var album: String
     public var name: String
+    @IBOutlet private var artworkImageView: NSImageView!
+//    public var image : UIImage? = currItem?.artwork?.image(at: CGSize(width: 200, height: 200));
     
     init() {
            self.artist = SpotifyHelpers.getSomethingOfCurrentTrack(thing: "artist")

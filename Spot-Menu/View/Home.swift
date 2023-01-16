@@ -11,21 +11,22 @@ import MediaPlayer
 struct Home: View {
     @StateObject var updaterViewModel = UpdaterViewModel()
     var body: some View {
-       
+        
         VStack{
-            HStack{
-                Button(action: {
-                    NSApplication.shared.terminate(nil)
-                }, label: {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                        .resizable()
-                        .frame(width: 20,height:20)
-                })
-                .buttonStyle(PlainButtonStyle())
-                .padding(.leading,250)
-                .padding(.top,10)
-                
-            }
+//            HStack{
+//                Button(action: {
+//                    NSApplication.shared.terminate(nil)
+//                }, label: {
+//                    Image(systemName: "rectangle.portrait.and.arrow.right")
+//                        .resizable()
+//                        .frame(width: 20,height:20)
+//                })
+//                .buttonStyle(PlainButtonStyle())
+//                .padding(.leading,250)
+//                .padding(.top,10)
+//
+//            }
+//            Spacer()
             HStack{
                 Image("track")
                 .resizable()
@@ -33,6 +34,16 @@ struct Home: View {
                 .padding(10)
                 
                 VStack{
+                    Button(action: {
+                        NSApplication.shared.terminate(nil)
+                    }, label: {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                            .resizable()
+                            .frame(width: 20,height:20)
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.leading,170)
+                    .padding(.top,10)
                     Text("\(updaterViewModel.trackname)")
                         .font(.system(size: 20))
                     Text("\(updaterViewModel.artistname)")
@@ -106,7 +117,7 @@ struct Home: View {
                 .buttonStyle(PlainButtonStyle())
                
             }
-            Spacer()
+//            Spacer()
         }
         .frame(width: 320, height: 220)
     }
