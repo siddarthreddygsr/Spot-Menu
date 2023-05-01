@@ -7,9 +7,11 @@
 
 import SwiftUI
 import MediaPlayer
+//import Spotifyios
 
 struct Home: View {
     @StateObject var updaterViewModel = UpdaterViewModel()
+    @State var sliderValue : Float = 0.0
     var body: some View {
         
         VStack{
@@ -31,6 +33,10 @@ struct Home: View {
                 Image("track")
                 .resizable()
                 .frame(width: 90,height: 90)
+//                .padding(10)
+//                Image(artwork_url)
+//                .resizable()
+                .frame(width: 90,height: 90)
                 .padding(10)
                 
                 VStack{
@@ -47,10 +53,12 @@ struct Home: View {
                     Text("\(updaterViewModel.trackname)")
                         .font(.system(size: 20))
                     Text("\(updaterViewModel.artistname)")
+                    Slider(value: $sliderValue, in: 0...10)
+//                       .padding()
                 }
                 .frame(width: 190)
                 
-                
+//                osascript -e 'tell application "Spotify" to get (duration of current track)div 60000 & (duration of current track)/1000 mod 60 div 1'
             }
             HStack{
                 Button(action: {
