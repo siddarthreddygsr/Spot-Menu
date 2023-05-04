@@ -30,14 +30,24 @@ struct Home: View {
 //            }
 //            Spacer()
             HStack{
-                Image("track")
-                .resizable()
-                .frame(width: 90,height: 90)
+                let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
+//                Image("track")
+                AsyncImage(
+                    url: URL(string: artwork),
+                    content: { image in
+                        image.resizable()
+                             .aspectRatio(contentMode: .fit)
+                             .frame(maxWidth: 300, maxHeight: 100)
+                    },
+                    placeholder: {
+                        ProgressView()
+                    }
+                    )
+                .frame(maxWidth: 100,maxHeight: 100)
+                
 //                .padding(10)
 //                Image(artwork_url)
 //                .resizable()
-                .frame(width: 90,height: 90)
-                .padding(10)
                 
                 VStack{
                     Button(action: {
@@ -57,7 +67,6 @@ struct Home: View {
 //                       .padding()
                 }
                 .frame(width: 190)
-                
 //                osascript -e 'tell application "Spotify" to get (duration of current track)div 60000 & (duration of current track)/1000 mod 60 div 1'
             }
             HStack{
@@ -125,7 +134,6 @@ struct Home: View {
                 .buttonStyle(PlainButtonStyle())
                
             }
-//            Spacer()
         }
         .frame(width: 320, height: 220)
     }
