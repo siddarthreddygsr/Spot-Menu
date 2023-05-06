@@ -11,7 +11,16 @@ import MediaPlayer
 
 struct Home: View {
     @StateObject var updaterViewModel = UpdaterViewModel()
-    @State var sliderValue : Float = 0.0
+//    @State var sliderValue : Float = 0.0
+    let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
+//    let duration = updaterViewModel.duration
+//    let position =  updaterViewModel.position
+    @State var sliderValue: Double = 0.0
+    var slider = 0.0
+    init() {
+//        slider = Double(updaterViewModel.slidervalue)
+        self.sliderValue = slider
+    }
     var body: some View {
         
         VStack{
@@ -30,7 +39,7 @@ struct Home: View {
 //            }
 //            Spacer()
             HStack{
-                let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
+                
 //                Image("track")
                 AsyncImage(
                     url: URL(string: artwork),
@@ -63,8 +72,21 @@ struct Home: View {
                     Text("\(updaterViewModel.trackname)")
                         .font(.system(size: 20))
                     Text("\(updaterViewModel.artistname)")
-                    Slider(value: $sliderValue, in: 0...10)
+//                    @Binding var slider = updaterViewModel.slidervalue
+//                    Slider(value: Binding(get: { updaterViewModel.position },
+//                                              set: { updaterViewModel.position = $0 }),
+//                               in: 0...Double(updaterViewModel.duration))
 //                       .padding()
+                    Slider(value: Binding(
+                        get: { Double(updaterViewModel.position) },
+                        set: { updaterViewModel.position = Float($0) }
+                    ), in: 0...Double(updaterViewModel.duration))
+                    .padding()
+                    .onChange(of: updaterViewModel.position) { newValue in
+                        let difference = Double(newValue) - Double(updaterViewModel.position)
+                        let debug_response = SpotifyHelpers.tellSpotify(command: "set player position to player position - \(difference)")
+                        print(debug_response)
+                    }
                 }
                 .frame(width: 190)
 //                osascript -e 'tell application "Spotify" to get (duration of current track)div 60000 & (duration of current track)/1000 mod 60 div 1'
@@ -136,6 +158,7 @@ struct Home: View {
             }
         }
         .frame(width: 320, height: 220)
+        
     }
 }
 
@@ -170,6 +193,9 @@ class UpdaterViewModel: ObservableObject {
     @Published var trackname:String = "ERROR"
     @Published var artistname:String = "ERROR"
     @Published var playerstate:String = "paused"
+    @Published var duration:Float = 0.0
+    @Published var position:Float = 0.0
+    @Published var slidervalue:Float = 0.0
     var timer: Timer?
     init() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
@@ -183,5 +209,9 @@ class UpdaterViewModel: ObservableObject {
         trackname = SpotifyHelpers.tellSpotify(command: "get name of current track")
         artistname = SpotifyHelpers.tellSpotify(command: "get artist of current track")
         playerstate = SpotifyHelpers.tellSpotify(command: "get player state")
+        duration = SpotifyHelpers.getduration()
+        position = SpotifyHelpers.getposition()
+        slidervalue = SpotifyHelpers.getsliderposition()
+        print(position)
     }
 }
