@@ -11,4 +11,5 @@ used scripts:
 to do:
 
 - [x] fix track artwork
-- [ ] - implement slider 
+- [x] implement slider 
+- [ ] make song name and artist name scrollable when it crosses a certain limit
