@@ -47,7 +47,7 @@ class SpotifyHelpers {
         }
         
         duration = duration/1000
-        var sliderposition = position/duration * 100
+        let sliderposition = position/duration * 100
         return sliderposition
     }
     

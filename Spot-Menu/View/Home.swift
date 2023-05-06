@@ -15,6 +15,7 @@ struct Home: View {
     let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
 //    let duration = updaterViewModel.duration
 //    let position =  updaterViewModel.position
+    @State var isSliderChangedByUser = false
     @State var sliderValue: Double = 0.0
     var slider = 0.0
     init() {
@@ -79,13 +80,21 @@ struct Home: View {
 //                       .padding()
                     Slider(value: Binding(
                         get: { Double(updaterViewModel.position) },
-                        set: { updaterViewModel.position = Float($0) }
+                        set: {
+                            updaterViewModel.position = Float($0)
+                            isSliderChangedByUser = true
+                        }
                     ), in: 0...Double(updaterViewModel.duration))
                     .padding()
                     .onChange(of: updaterViewModel.position) { newValue in
-                        let difference = Double(newValue) - Double(updaterViewModel.position)
-                        let debug_response = SpotifyHelpers.tellSpotify(command: "set player position to player position - \(difference)")
-                        print(debug_response)
+                        let difference = Double(updaterViewModel.position) - Double(SpotifyHelpers.getposition())
+//                        let currentpos = SpotifyHelpers.getposition()
+                        
+                        print(difference,updaterViewModel.position)
+                        if abs(difference) > 2 && isSliderChangedByUser {
+                                SpotifyHelpers.tellSpotify(command: "set player position to player position + \(difference)")
+                            }
+                        
                     }
                 }
                 .frame(width: 190)
@@ -212,6 +221,6 @@ class UpdaterViewModel: ObservableObject {
         duration = SpotifyHelpers.getduration()
         position = SpotifyHelpers.getposition()
         slidervalue = SpotifyHelpers.getsliderposition()
-        print(position)
+//        print(position)
     }
 }

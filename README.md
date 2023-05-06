@@ -10,5 +10,5 @@ used scripts:
 
 to do:
 
-[x] - fix track artwork
-[ ] - implement slider 
+- [x] fix track artwork
+- [ ] - implement slider 
