@@ -12,7 +12,7 @@ import MediaPlayer
 struct Home: View {
     @StateObject var updaterViewModel = UpdaterViewModel()
 //    @State var sliderValue : Float = 0.0
-    let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
+//    let artwork = SpotifyHelpers.tellSpotify(command: "get artwork url of current track")
 //    let duration = updaterViewModel.duration
 //    let position =  updaterViewModel.position
     @State var isSliderChangedByUser = false
@@ -43,7 +43,7 @@ struct Home: View {
                 
 //                Image("track")
                 AsyncImage(
-                    url: URL(string: artwork),
+                    url: URL(string: SpotifyHelpers.tellSpotify(command: "get artwork url of current track")),
                     content: { image in
                         image.resizable()
                              .aspectRatio(contentMode: .fit)

@@ -1,0 +1,25 @@
+Slider(value: Binding(
+                                            get: { Double(updaterViewModel.position) },
+                                            set: {
+                                                updaterViewModel.position = Float($0)
+                                                isSliderChangedByUser = true
+                                            }
+                                        ), in: 0...Double(updaterViewModel.duration))
+                                    .padding()
+                                    .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .global)
+                                                .onChanged { value in
+                                                    let delta = value.translation.width - value.translation.height
+                                                    let sensitivity = 0.5
+                                                    updaterViewModel.position += Float(delta) * Float(sensitivity)
+                                                    let difference = Double(updaterViewModel.position) - Double(SpotifyHelpers.getposition())
+                                                    if abs(difference) > 2 && isSliderChangedByUser {
+                                                        SpotifyHelpers.tellSpotify(command: "set player position to player position + \(difference)")
+                                                    }
+                                                }
+                                    )
+                                    .onChange(of: updaterViewModel.position) { newValue in
+                                        let difference = Double(updaterViewModel.position) - Double(SpotifyHelpers.getposition())
+                                        if abs(difference) > 2 && isSliderChangedByUser {
+                                            SpotifyHelpers.tellSpotify(command: "set player position to player position + \(difference)")
+                                        }
+                                    }

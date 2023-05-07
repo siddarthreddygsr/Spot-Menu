@@ -13,3 +13,4 @@ to do:
 - [x] fix track artwork
 - [x] implement slider 
 - [ ] make song name and artist name scrollable when it crosses a certain limit
+- [ ] optimise slider
