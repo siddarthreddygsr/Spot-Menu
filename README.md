@@ -1,3 +1,4 @@
+this app adds the ability to control Spotify from mac menu bar
 commands to be integrated:
 
 ```
